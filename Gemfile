@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# Use devise for user authentication
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use Twitter bootstrap

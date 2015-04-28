@@ -7,8 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Contact", contact_path %></li>
+      <% if current_user %>
+        <li><%= link_to "My Wikis", current_user %></li>
+      <% end %>
 
-<%= yield %>
-
+      <div class="pull-right user-info">
+        <% if current_user %>
+          <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+          Hello <%= link_to (current_user.name || current_user.email), current_user %>!
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary btn-md">
+              <span class="glyphicon glyphicon-glyphicon-menu-hamburger"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <li>Create wiki</li>
+            </ul>
+          </div>
+        <% else %>
+          <ul class="nav nav-pills">
+            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          </ul>
+        <% end %>
+      </div>
+    </ul>
+    <%= yield %>
+  </div>
 </body>
 </html>
