@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'contact' => 'welcome#contact'
 
   
-  resources :users, only: [:update, :show, :index]
+  resources :users, only: [:update, :show, :index] do
+    resources :wikis, only: [:create, :destroy]
+  end
+
 
   root to: 'welcome#home'
 end
