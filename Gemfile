@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
-
+# Use fog for storing images
+gem 'fog'
+# Use Carrierwave for uploading images
+gem 'carrierwave'
+# Use MiniMagick for manipulating images
+gem 'mini_magick'
 # Use Figaro for environment variables
 gem 'figaro', '1.0'
 # Use devise for user authentication
