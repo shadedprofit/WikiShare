@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Use Figaro for environment variables
+gem 'figaro', '1.0'
 # Use devise for user authentication
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
