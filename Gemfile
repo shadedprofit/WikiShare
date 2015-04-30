@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Use faker to seed users and wikis
+gem 'faker'
 # Use Pundit for user authorization
 gem 'pundit'
 # Use fog for storing images
