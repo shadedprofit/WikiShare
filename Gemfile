@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Use Pundit for user authorization
+gem 'pundit'
 # Use fog for storing images
 gem 'fog'
 # Use Carrierwave for uploading images
