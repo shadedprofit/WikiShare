@@ -1,0 +1,5 @@
+<%= content_tag :tr, class: 'media', id: "wiki-#{wiki.id}" do %>
+    <td><%= link_to wiki.title, wiki_path(wiki) %></td>
+    <td><%= link_to "Edit", edit_wiki_path(wiki) %></td>
+    <td><%= link_to "Delete", wiki, method: :delete, data: { confirm: 'Are you sure you want to delete this wiki?' }, remote: true %></td>
+<% end %>

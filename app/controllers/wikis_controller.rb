@@ -52,13 +52,11 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     title = @wiki.title
     authorize @wiki
+    @wiki.destroy
 
-    if @wiki.destroy
-      flash[:notice] = "\"#{title}\" was deleted successfully."
-      redirect_to @user
-    else
-      flash[:error] = "There was an error deleting the wiki. Please try again."
-      render :show
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
