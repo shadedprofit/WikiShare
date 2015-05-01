@@ -1,7 +1,7 @@
 <br />
     <div class="media">
       <div class="media-body">
-        <h2 class="media-heading text-center">My Wikis</h2>
+        <h2 class="media-heading text-center"><%= current_user.name.capitalize %>'s Wikis</h2>
       </div>
     </div>
     <br />
@@ -16,5 +16,10 @@
       </div>
       <div class="col-md-2"></div>
     </div>
+
+    <br />
+    <p class="text-center">
+      <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
+    </p>
 
 

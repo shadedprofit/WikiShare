@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
-# Use faker to seed users and wikis
+# Use Stripe for accepting payments
+gem 'stripe'
+# Use Faker to seed users and wikis
 gem 'faker'
 # Use Pundit for user authorization
 gem 'pundit'
-# Use fog for storing images
+# Use Fog for storing images
 gem 'fog'
 # Use Carrierwave for uploading images
 gem 'carrierwave'

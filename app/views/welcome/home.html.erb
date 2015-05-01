@@ -6,43 +6,63 @@
   <div class="jumbotron col-md-8">
     <h2 class="text-center">Create and share Markdown Wikis</h2>
     <br />
-    <p class="text-center">
-      <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %>
-    </p>
+    <% if !current_user %>
+      <p class="text-center">
+        <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %>
+      </p>
+    <% elsif current_user.role == nil %>
+      <p class="text-center">
+        <%= link_to "Create Wiki", new_wiki_path, class: 'btn btn-primary' %>
+        <%= link_to "Upgrade Plan", new_charge_path, class: 'btn btn-primary' %>
+      </p>
+    <% else %>
+      <p class="text-center">
+        <%= link_to "Create Wiki", new_wiki_path, class: 'btn btn-primary' %>
+      </p>
+    <% end %>
+      
   </div>
   <div class="col-md-2"></div>
 </div>
 
 <br />
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-5">
-    <h3 class="media text-center">Create public wikis!</h3>
+<% if !current_user %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h3 class="media text-center">Create public wikis!</h3>
+    </div>
+    <div class="col-md-5">
+      <h3 class="media text-center">Create private wikis!</h3>
+    </div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-5">
-    <h3 class="media text-center">Create private wikis!</h3>
-  </div>
-  <div class="col-md-1"></div>
-</div>
 
-<br />
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-5">
-    <div class="jumbotron alert alert-info paid-plan">
-      <p class="text-center"><strong>Unlimited public wikis for FREE!</strong></p>
+  <br />
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="jumbotron alert alert-info paid-plan">
+        <p class="text-center"><strong>Unlimited public wikis for FREE!</strong></p>
+      </div>
+      
+      <p class="text-center">
+        <%= link_to "Register now", new_user_registration_path, class: 'btn btn-info' %>
+      </p>
     </div>
-    <p class="text-center">
-    <button class="btn btn-info">Free Plan</button>
-    </p>
-  </div>
-  <div class="col-md-5">
-    <div class="jumbotron alert alert-success paid-plan">
-      <p class="text-center"><strong>Unlimited private wikis only $9.99 a month!</strong></p>
+    
+    <div class="col-md-5">
+      <div class="jumbotron alert alert-success paid-plan">
+        <p class="text-center"><strong>Unlimited private wikis only $15.00 a month!</strong></p>
+      </div>
+    
+      <p class="text-center">
+        <%= link_to "Learn more!", about_path, class: 'btn btn-success' %>
+      </p>
+    
     </div>
-    <p class="text-center">
-    <button class="btn btn-success">Premium Plan</button>
-    </p>
+  
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-1"></div>
-</div>
+
+<% end %>

@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Account Settings</h2>
 
 <div class="row">
   <div class="col-md-8">
@@ -50,6 +50,16 @@
         <%= f.submit "Update", class: 'btn btn-success' %>
       </div>
     <% end %>
+
+  <% if current_user.role == 'premium' %>
+    <h3 class="lead">You are currently a Premium member</h3>
+    <%= link_to "Cancel premium membership", user_path(current_user, :user => {role: nil}), method: :put, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+  <% elsif current_user.role == 'admin' %>
+    <h3 class="lead">This is an administrator account</h3>
+  <% else %>
+    <h3 class="lead">Upgrade to Premium membership</h3>
+    <%= link_to "Premium Plan", new_charge_path, class: 'btn btn-primary' %>
+  <% end %>
 
     <h3>Cancel my account</h3>
     <div class="form-group">
