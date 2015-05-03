@@ -10,7 +10,7 @@
       <p class="text-center">
         <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary' %>
       </p>
-    <% elsif current_user.role == nil %>
+    <% elsif current_user.role == nil || current_user.role == '' %>
       <p class="text-center">
         <%= link_to "Create Wiki", new_wiki_path, class: 'btn btn-primary' %>
         <%= link_to "Upgrade Plan", new_charge_path, class: 'btn btn-primary' %>

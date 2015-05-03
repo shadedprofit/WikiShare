@@ -53,7 +53,7 @@
 
   <% if current_user.role == 'premium' %>
     <h3 class="lead">You are currently a Premium member</h3>
-    <%= link_to "Cancel premium membership", user_path(current_user, :user => {role: nil}), method: :put, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+    <%= link_to "Cancel premium membership", user_path(current_user, :user => {:role => nil}), :method => :put, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
   <% elsif current_user.role == 'admin' %>
     <h3 class="lead">This is an administrator account</h3>
   <% else %>
