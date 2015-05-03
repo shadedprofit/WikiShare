@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Use Redcarpet for formatting text in Markdown
+gem 'redcarpet'
 # Use Stripe for accepting payments
 gem 'stripe'
 # Use Faker to seed users and wikis

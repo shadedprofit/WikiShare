@@ -1,9 +1,9 @@
-<h1><%= @wiki.title %></h1>
+<h1><%= markdown_to_html @wiki.title %></h1>
 
 <br />
 <div class="row">
   <div class="col-md-8">
-    <p><%= @wiki.body %></p>
+    <p><%= markdown_to_html @wiki.body %></p>
   </div>
   <div class="col-md-4">
     <% if policy(@wiki).edit? %>
