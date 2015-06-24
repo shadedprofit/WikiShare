@@ -1,0 +1,3 @@
+<% if @wiki.user.destroyed? %>
+  $('#user-' +<%= @wiki.user.id %>).hide();
+<% end %>

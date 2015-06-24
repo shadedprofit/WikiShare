@@ -10,6 +10,6 @@
     </ul>
   </div>
   <div class="col-md-8">
-    <%= render partial: 'form', locals: { wiki: @wiki } %>
+    <%= render partial: 'form', locals: { wiki: @wiki, users: User.all } %>
   </div>
 </div>

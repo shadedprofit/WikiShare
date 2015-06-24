@@ -1,0 +1,4 @@
+<%= content_tag :tr, class: 'media', id: "user-#{collaborator.user_id}" do %>
+    <td><%= collaborator.user.name %></td>
+    <td class="center"><%= link_to "", wiki_collaborator_path(wiki, collaborator.id), class: 'glyphicon glyphicon-minus', method: :delete %></td>
+<% end %>

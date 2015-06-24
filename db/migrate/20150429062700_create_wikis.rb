@@ -4,7 +4,8 @@ class CreateWikis < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.boolean :private, default: false
-      t.references :user, index: true
+      t.integer :user_id
+      
 
       t.timestamps null: false
     end

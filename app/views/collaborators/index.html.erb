@@ -1,0 +1,50 @@
+<br />
+    <div class="media">
+      <div class="media-body">
+        <h2 class="media-heading text-center">Collaborators</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <br />
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Remove Collaborator</th>
+              </tr>
+            </thead>
+            <tbody class="js-items">
+            <!-- <% unless @collaborators.empty? %> -->
+
+              <%= render partial: 'collaborators/collaborator', collection: @collaborators, locals: { wiki: @wiki, user: @user } %>
+               <!-- <% end %> -->
+            </tbody>
+          </table>
+
+
+          <br />
+          <table class="table table-striped table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Add as Collaborator</th>
+              </tr>
+            </thead>
+            <tbody class="js-items">
+            <% @users.each do |user| %>
+              <% unless @collaborators.include? user %>
+                <%= render partial: 'collaborators/user', locals: { wiki: @wiki, collaborator: Collaborator.new, user: user } %>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+       
+        
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+
+

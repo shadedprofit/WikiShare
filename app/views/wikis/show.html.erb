@@ -8,6 +8,7 @@
   <div class="col-md-4">
     <% if policy(@wiki).edit? %>
       <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
+      <%= link_to "Add or Remove Collaborators", wiki_collaborators_path(@wiki), class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>

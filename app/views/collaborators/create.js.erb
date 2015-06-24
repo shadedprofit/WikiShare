@@ -1,0 +1,3 @@
+<% if @wiki.user.valid? %>
+  $('.js-items').prepend("<%= escape_javascript(render(@wiki.user)) %>");
+<% end %>

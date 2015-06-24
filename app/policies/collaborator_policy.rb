@@ -1,0 +1,2 @@
+class CollaboratorPolicy < ApplicationPolicy
+end
