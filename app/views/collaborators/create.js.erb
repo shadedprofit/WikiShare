@@ -1,3 +1,8 @@
-<% if @wiki.user.valid? %>
-  $('.js-items').prepend("<%= escape_javascript(render(@wiki.user)) %>");
+<% if @wiki.collaborator.valid? %>
+  $('.js-collaborators').prepend("<%= escape_javascript(render(@wiki.collaborator)) %>");
+  $('#user-' +<%= @user.id %>).hide();
+<% end %>
+
+<% if @wiki.collaborators.include? user %>
+  $('.non-collaborator').addClass("hidden");
 <% end %>

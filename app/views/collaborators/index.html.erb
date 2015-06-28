@@ -13,14 +13,11 @@
             <thead>
               <tr>
                 <th>Username</th>
-                <th>Remove Collaborator</th>
+                <th class="text-center">Remove Collaborator</th>
               </tr>
             </thead>
-            <tbody class="js-items">
-            <!-- <% unless @collaborators.empty? %> -->
-
-              <%= render partial: 'collaborators/collaborator', collection: @collaborators, locals: { wiki: @wiki, user: @user } %>
-               <!-- <% end %> -->
+            <tbody class="js-collaborators">
+              <%= render partial: 'collaborators/collaborator', collection: @collaborators, locals: { wiki: @wiki, user: @user } %>  
             </tbody>
           </table>
 
@@ -30,14 +27,13 @@
             <thead>
               <tr>
                 <th>Username</th>
-                <th>Add as Collaborator</th>
+                <th class="text-center">Add as Collaborator</th>
               </tr>
             </thead>
-            <tbody class="js-items">
+            <tbody class="user-table">
             <% @users.each do |user| %>
-              <% unless @collaborators.include? user %>
+
                 <%= render partial: 'collaborators/user', locals: { wiki: @wiki, collaborator: Collaborator.new, user: user } %>
-              <% end %>
             <% end %>
             </tbody>
           </table>

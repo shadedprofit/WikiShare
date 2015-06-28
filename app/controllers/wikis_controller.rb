@@ -28,17 +28,8 @@ class WikisController < ApplicationController
     @user = current_user
     @wiki = current_user.wikis.build(wiki_params)
     @wiki.user = @user
-
-    # puts params[:wiki][:user_ids]
     
     authorize @wiki
-
-    # @wiki.save
-
-    # params[:wiki][:user_ids].each do |user_id|
-    #   user = User.find(user_id)
-    #   @wiki.collaborators.create(:user => user)
-    # end
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -51,17 +42,8 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-
-    puts params[:wiki][:user_ids]
-
     authorize @wiki
-    
     @wiki.save
-
-    params[:wiki][:user_ids].each do |user_id|
-      user = User.find(user_id)
-      @wiki.collaborators.create(:user => user)
-    end
 
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated."
@@ -75,14 +57,16 @@ class WikisController < ApplicationController
   def destroy
     @user = current_user
     @wiki = Wiki.find(params[:id])
-    title = @wiki.title
     authorize @wiki
-    @wiki.destroy
-
-    respond_to do |format|
-      format.html
-      format.js
+    
+    if @wiki.destroy
+      flash[:notice] = "Wiki was deleted."
+      render :index
+    else
+      flash[:error] = "There was an error deleting the wiki. Please try again."
+      render :edit
     end
+
   end
 
   private

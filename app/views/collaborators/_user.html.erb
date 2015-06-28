@@ -1,7 +1,7 @@
 <%= form_for [wiki, collaborator] do |f| %>
   <%= hidden_field :user_id, user.id %>
-  <%= content_tag :tr, class: 'media', id: "user-#{user.id}" do %>
+  <%= content_tag :tr, class: 'media non-collaborator', id: "user-#{user.id}" do %>
     <td><%= user.name %></td>
-    <td class="center"><%= f.submit "+", class: 'glyphicon glyphicon-plus' %></td>
+    <td class="text-center"><%= f.submit "+", class: 'glyphicon glyphicon-plus', remote: true %></td>
     <% end %>
 <% end %>

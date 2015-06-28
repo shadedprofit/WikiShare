@@ -1,3 +1,4 @@
-<% if @wiki.user.destroyed? %>
-  $('#user-' +<%= @wiki.user.id %>).hide();
+<% if @wiki.collaborator.destroyed? %>
+  $('#user-' +<%= @wiki.collaborator.id %>).hide();
+  $('.user-table').prepend("<%= escape_javascript(render(@wiki.collaborator)) %>");
 <% end %>
