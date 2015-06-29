@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   def update
-    @wikis = current_user.wikis
+    @user = User.friendly.find(params[:id])
+    @wikis = @user.wikis
 
-    if current_user.update_attributes(user_params)
+    if @user.update_attributes(user_params)
       @wikis.update_all(:private => false) if current_user.role == nil || current_user.role == ''
       flash[:notice] = "User information updated"
       redirect_to edit_user_registration_path
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.friendly.find(params[:id])
     @wikis = @user.wikis
   end
 

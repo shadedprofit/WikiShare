@@ -1,6 +1,6 @@
 class CollaboratorsController < ApplicationController
   def index
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaborators = @wiki.collaborators
     @users = User.all
     @users.each do |user|
@@ -11,7 +11,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     params[:user_id].each_key do |user_id|
       user = User.find(user_id)
       @collaborator = @wiki.collaborators.create(:user => user)
@@ -36,7 +36,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaborator = @wiki.collaborators.find(params[:id])
     authorize @wiki
     @users = User.all
@@ -50,7 +50,5 @@ class CollaboratorsController < ApplicationController
     end
     
   end
-
- 
 
 end

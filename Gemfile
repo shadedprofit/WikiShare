@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Use FriendlyId to create unique urls
+gem 'friendly_id', '~> 5.1.0'
 # Use Redcarpet for formatting text in Markdown
 gem 'redcarpet'
 # Use Stripe for accepting payments

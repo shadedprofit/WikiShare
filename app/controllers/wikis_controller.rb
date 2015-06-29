@@ -5,7 +5,7 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
   end
 
@@ -16,7 +16,7 @@ class WikisController < ApplicationController
 
   def edit
     @users = User.all
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     if @wiki.private == true && (current_user.role == nil || current_user.role == '')
       render :show
       flash[:error] = "You don't have permission to edit this wiki"
@@ -41,7 +41,7 @@ class WikisController < ApplicationController
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
     @wiki.save
 
@@ -56,7 +56,7 @@ class WikisController < ApplicationController
 
   def destroy
     @user = current_user
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
     authorize @wiki
     
     if @wiki.destroy
