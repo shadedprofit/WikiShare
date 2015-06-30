@@ -3,10 +3,6 @@ class CollaboratorsController < ApplicationController
     @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaborators = @wiki.collaborators
     @users = User.all
-    @users.each do |user|
-      @non_collaborators = []
-      @non_collaborators << user
-    end
     authorize @wiki
   end
 
@@ -28,11 +24,6 @@ class CollaboratorsController < ApplicationController
       flash[:error] = "There was an error. Please try again."
       render :index
     end
-
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
   end
 
   def destroy

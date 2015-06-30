@@ -23,27 +23,6 @@
       <%= f.check_box :private %> Private wiki
       <% end %>
     </div>
-
-    <br />
-    <table class="table table-striped table-hover table-bordered form-group">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th class="text-center">Add Collaborator</th>
-        </tr>
-      </thead>
-      <tbody class="js-items">
-        <% users.each do |user| %>
-          <%= content_tag :tr, class: 'media', id: "user-#{user.id}" do %>
-            <td><%= user.name %></td>
-            <td class="text-center">
-              
-            <%= check_box_tag "wiki[user_ids][]", user.id, wiki.collaborators.include?(user) %>
-            </td>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
   <% end %>
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
